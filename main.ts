@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 const MONGO_URL = Deno.env.get("MONGO_URL");
 if (!MONGO_URL) {
   console.error("Please provide a MONGO_URL");
+  Deno.exit(1);
 }
 
 const client = new MongoClient(MONGO_URL);
