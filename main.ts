@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { HolaModel } from "./types.ts";
 
 const MONGO_URL = Deno.env.get("MONGO_URL");
 if (!MONGO_URL) {
@@ -10,7 +11,7 @@ await client.connect();
 console.info("Connected to MongoDB");
 
 const db = client.db("FinalBackApiDB");
-const CosasCollection = db.collection("cosas");
+const CosasCollection = db.collection<HolaModel>("cosas");
 
 const handler = async (req: Request): Promise<Response> => {
   const method = req.method;
